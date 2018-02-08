@@ -1,6 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
-import DuckImage from '../assets/Duck.jpg';
 import './HomeView.scss';
 import Typed from 'typed.js';
 
@@ -37,6 +37,10 @@ class Typing extends React.Component {
         );
     }
 }
+
+Typing.propTypes = {
+    strings: PropTypes.arrayOf(PropTypes.string)
+};
 
 
 export class HomeView extends React.Component {
