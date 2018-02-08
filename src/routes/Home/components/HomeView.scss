@@ -1,0 +1,45 @@
+.duck {
+  display: block;
+  width: 120px;
+  margin: 1.5rem auto;
+}
+
+/* Adding CSS manually is only necessary in JSFiddle,
+   where CSS can't be inserted into the <head> */
+.typed-cursor{
+  opacity: 1;
+  animation: typedjsBlink 0.7s infinite;
+  -webkit-animation: typedjsBlink 0.7s infinite;
+  animation: typedjsBlink 0.7s infinite;
+}
+@keyframes typedjsBlink{
+  50% { opacity: 0.0; }
+}
+@-webkit-keyframes typedjsBlink{
+  0% { opacity: 1; }
+  50% { opacity: 0.0; }
+  100% { opacity: 1; }
+}
+.typed-fade-out{
+  opacity: 0;
+  transition: opacity .25s;
+  -webkit-animation: 0;
+  animation: 0;
+}
+
+.delayed {
+  opacity:0;
+  &.reveal {
+    transition:opacity 1s linear;
+    opacity: 1;
+  }
+}
+
+.buttons {
+  > :first-child {
+    margin-top: 1em;
+  }
+  > * {
+    font-size: 1.2em;
+  }
+}

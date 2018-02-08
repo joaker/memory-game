@@ -1,0 +1,40 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "eslint:recommended",
+    "react"
+  ],
+  "plugins": [
+    "babel",
+    "react",
+    "promise"
+  ],
+  "env": {
+    "browser" : true
+  },
+  "globals": {
+    "__dirname"    : true,
+    "process"      : true,
+    "exports"      : true,
+    "Promise"      : true,
+    "require"      : true,
+    "module"       : true,
+    "global"       : true,
+    "window"       : true,
+    "__DEV__"      : false,
+    "__TEST__"     : false,
+    "__PROD__"     : false,
+    "__COVERAGE__" : false
+  },
+  "rules": {
+    "react/forbid-prop-types" : "off",
+    "max-nested-callbacks"    : "off",
+    "new-cap"                 : "off",
+    "prefer-reflect"          : "off",
+    "key-spacing"             : "off",
+    "jsx-quotes"              : [2, "prefer-single"],
+    "max-len"                 : [2, 120, 2],
+    "object-curly-spacing"    : [2, "always"],
+    "comma-dangle"            : "off"
+  }
+}
