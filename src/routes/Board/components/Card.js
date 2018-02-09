@@ -14,7 +14,7 @@ const Card = ({ number, symbol, flipped, isMatched, disabled, toggleCard }) => {
         <div className={className} onClick={() => toggleCard(number)}>
             <div className='flipper'>
                 <div className='front'>
-                    {number}
+                    {number + 1}
                 </div>
                 <div className='back'>
                     <i className='material-icons'>{symbol}</i>

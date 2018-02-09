@@ -31,6 +31,7 @@
 
 /* entire container, keeps perspective */
 .flip-container {
+  cursor: pointer;
 	perspective: 60vmax;
   transform-style: preserve-3d;
   opacity: 1;
@@ -52,6 +53,10 @@
 .flip-container, .front, .back {
   width: 9vmax;
   height: 9vmax;
+}
+
+.front {
+  opacity: 0.4;
 }
 
 /* flip speed goes here */
