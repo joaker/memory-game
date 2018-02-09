@@ -1,8 +1,19 @@
 .page-layout__viewport {
-  padding-top: 4rem;
+  height: 100%;
+
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+
 }
 
 .page-layout__nav-item--active {
   font-weight: bold;
   text-decoration: underline;
+}
+
+.container {
+  height: 100%;
+
 }
