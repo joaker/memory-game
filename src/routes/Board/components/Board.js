@@ -3,29 +3,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Board.scss';
+import Card from '../containers/CardContainer';
 
-const Cell = ({ children }) => {
-    return (
-        <div className='cell'>
-            {children}
-        </div>
-    );
-};
+export class Board extends React.PureComponent {
+    componentDidMount () {
+        this.props.startGame();
+    }
+    render () {
+        const cells = this.props.cardSymbols.map((card, index) => ((
+            <Card key={index} number={index}/>
+        )));
 
-Cell.propTypes = {
-    children: PropTypes.any,
-};
-
-export const Board = () => {
-    return (
-        <div className='board__page__wrapper'>
-            <Cell />
-        </div>
-    );
-};
+        return (
+            <div className='board__page__wrapper'>
+                {cells}
+            </div>
+        );
+    }
+}
 
 Board.propTypes = {
-
+    startGame: PropTypes.func.isRequired,
+    cardSymbols: PropTypes.array.isRequired,
 };
 
 export default Board;

@@ -1,85 +1,114 @@
 .board__page__wrapper {
-  height: 100%;
+
   display: flex;
-  flex-flow: column nowrap;
+  flex-flow: row wrap;
 
-
-  font-size: 14px;
-  line-height: 32px;
-
-  .board__page {
-    flex-grow: 1;
-    display: flex;
-    flex-flow: column nowrap;
-  }
-
-  .board__row {
-    border: #e0e0e0 1px 1px 0 1px solid;
-    color: #757575;
-    -webkit-box-flex: 1 1 0%;
-    -webkit-flex: 1 1 0%;
+  .cell {
+    width: 9vmax;
+    height: 9vmax;
+    margin: 1vmax;
+    border: #e0e0e0 1px solid;
+    box-shadow: 10px 10px 5px #aaaaaa;
 
     display: flex;
     flex-flow: row nowrap;
-
-    min-height: 10vh;
-    height: 12vh;
-
-    > * {
-      flex-grow: 1;
-      flex-basis: 0;
-    }
+    align-items: center;
+    justify-content: center;
   }
 
-  .board__page {
-    .board__row .cell {
-      border-right: #e0e0e0 1px solid;
-    }
+  .material-icons {
+    font-size: 5vmax;
   }
-
-
-
-  $headerHeight: 2.5em;
-  .board__row.board__headerrow {
-    height: $headerHeight;
-    min-height: $headerHeight;
-    max-height: $headerHeight;
-  }
-
-  .columnheader {
-    height: 1em;
-    max-height: 1em;
-  }
-
-  .cell {
-    .h2, h2 {
-      font-size: 1em;
-      padding-left: 1em;
-      padding-top: .25em;
-      text-align: left;
-    }
-  }
-
-  $break-small: 768px;
-  .hide-small {
-    @media screen and (max-width: $break-small - 1) {
-        display: none;
-    }
-  }
-  .hide-large {
-    @media screen and (min-width: $break-small) {
-      display:none;
-    }
-  }
-
-
 }
 
-.board__viewport {
-  padding-top: 4rem;
+/* entire container, keeps perspective */
+.flip-container {
+	perspective: 60vmax;
+  transform-style: preserve-3d;
+  opacity: 1;
+  color: black;
+      transition: opacity .6s !important;
+      transition: color .6s !important;
+}
+	/* flip the pane when hovered */
+	.flip-container.flipped .flipper,
+  .flip-container.isMatched .flipper
+  {
+		transform: rotateY(180deg);
+	}
+  .flip-container.isMatched {
+    opacity: 0.20;
+    color: green;
+  }
+
+.flip-container, .front, .back {
+  width: 9vmax;
+  height: 9vmax;
 }
 
-.board__nav-item--active {
-  font-weight: bold;
-  text-decoration: underline;
+/* flip speed goes here */
+.flipper {
+	transition: 0.6s;
+	transform-style: preserve-3d;
+
+	position: relative;
+
+
+      text-align: initial;
+      width: 9vmax;
+      height: 9vmax;
+}
+
+/* hide back of pane during swap */
+.front, .back {
+	backface-visibility: hidden;
+
+	position: absolute;
+	top: 0;
+	left: 0;
+  width: 9vmax;
+  height: 9vmax;
+}
+
+.front, .back {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.front {
+  font-size: 2em;
+}
+
+/* front pane, placed above back */
+.front {
+	z-index: 2;
+	/* for firefox 31 */
+	transform: rotateY(0deg);
+}
+
+/* back, initially hidden pane */
+.back {
+	transform: rotateY(180deg);
+}
+
+.cell {
+
+  margin: 1vmax;
+  border: #e0e0e0 1px solid;
+  box-shadow: 10px 10px 5px #aaaaaa;
+
+  .deactivated {
+    opacity: .2;
+  }
+
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.material-icons {
+  font-size: 5vmax;
 }

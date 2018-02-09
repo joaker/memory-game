@@ -29,6 +29,7 @@
   "rules": {
     "react/forbid-prop-types" : "off",
     "max-nested-callbacks"    : "off",
+    "no-multi-spaces"         : "off",
     "new-cap"                 : "off",
     "prefer-reflect"          : "off",
     "key-spacing"             : "off",
