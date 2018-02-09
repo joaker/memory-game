@@ -2,6 +2,11 @@
 
 Search for matching pairs two cards at a time.  When you've gotten them all, you've won!
 
+## Demo
+
+A demo is available on [heroku](https://joaker-memory-game.herokuapp.com/ "Memory Game Demo")
+Please note that heroku make take up to two minutes to load the first request.
+
 ## Installation
 
 ```bash
