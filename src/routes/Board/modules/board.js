@@ -74,7 +74,7 @@ export function toggleCard (number) {
             return;
         }
 
-        if (!first) { //
+        if (first === null) { //
             return dispatch(setProperty('first', number));
         }
 
@@ -92,16 +92,22 @@ export function toggleCard (number) {
                 dispatch(setProperty('first', null));
                 dispatch(setProperty('second', null));
 
+                const nextMatched = {
+                    ...matched,
+                    [first]: firstSymbol,
+                    [number]: symbol,
+                };
                 if (matchMade) {
-                    dispatch(setProperty('matched', {
-                        ...matched,
-                        [first]: firstSymbol,
-                        [number]: symbol,
-                    }));
+                    dispatch(setProperty('matched', nextMatched));
+
+                    const winner = !state.board.cardSymbols.some((symbol, i) => !nextMatched[i]);
+                    if (winner) {
+                        dispatch(setProperty('winner', winner));
+                    }
                 }
 
                 resolve();
-            }, 1500);
+            }, 1000);
         });
     };
 }
@@ -116,7 +122,14 @@ export const actions = {
 // Action Handlers
 // ------------------------------------
 const ACTION_HANDLERS = {
-    [START_GAME]              : (state, { cardSymbols }) => ({ ...state, cardSymbols }),
+    [START_GAME]              : (state, { cardSymbols }) => ({ ...{
+        cardSymbols: [],
+        first: null,
+        second: null,
+        matched: {
+        },
+        winner: false,
+    }, cardSymbols }),
     [SET_PROPERTY]    : (state, { name, value }) => {
         return {
             ...state,
@@ -134,6 +147,7 @@ const initialState = {
     second: null,
     matched: {
     },
+    winner: false,
 };
 export default function counterReducer (state = initialState, action) {
     const handler = ACTION_HANDLERS[action.type];

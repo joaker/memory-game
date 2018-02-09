@@ -16,9 +16,10 @@ const mapDispatchToProps = {
     startGame,
 };
 
-const mapStateToProps = ({ board:{ cardSymbols } }) => {
+const mapStateToProps = ({ board:{ cardSymbols, winner } }) => {
     return ({
         cardSymbols,
+        winner,
     });
 };
 

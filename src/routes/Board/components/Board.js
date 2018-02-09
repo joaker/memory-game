@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Board.scss';
 import Card from '../containers/CardContainer';
+import classnames from 'classnames';
 
 export class Board extends React.PureComponent {
     componentDidMount () {
@@ -14,9 +15,16 @@ export class Board extends React.PureComponent {
             <Card key={index} number={index}/>
         )));
 
+        const className = classnames('board__page__wrapper', {
+            winner: this.props.winner,
+        });
         return (
-            <div className='board__page__wrapper'>
-                {cells}
+            <div className={className}>
+                <h2 className='title'>Memory Game</h2>
+                <h3 className='successMessage'>Congratulations - you won!</h3>
+                <div className='board__page'>
+                    {cells}
+                </div>
             </div>
         );
     }
@@ -25,6 +33,7 @@ export class Board extends React.PureComponent {
 Board.propTypes = {
     startGame: PropTypes.func.isRequired,
     cardSymbols: PropTypes.array.isRequired,
+    winner: PropTypes.bool,
 };
 
 export default Board;
