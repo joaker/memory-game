@@ -10,14 +10,20 @@ describe('(View) Home', () => {
     });
 
     it('Renders a welcome message', () => {
-        const welcome = _component.find('h4');
+        const welcome = _component.find('h1');
         expect(welcome).to.exist();
-        expect(welcome.text()).to.match(/Welcome!/);
+        // test for message - requires a long delay
+        // return new Promise((resolve) => {
+        //     setTimeout(() => {
+        //         expect(welcome.text()).to.match(/Would you like to play a game?/);
+        //         resolve();
+        //     }, 10000);
+        // });
     });
 
-    it('Renders an awesome duck image', () => {
-        const duck = _component.find('img');
-        expect(duck).to.exist();
-        expect(duck.attr('alt')).to.match(/This is a duck, because Redux!/);
+    it('Renders a start button', () => {
+        const start = _component.find('a');
+        expect(start).to.exist();
+        expect(start.text()).to.match(/Start/);
     });
 });

@@ -5,7 +5,6 @@ import symbols from './symbols';
 // Constants
 // ------------------------------------
 export const START_GAME = 'START_GAME';
-export const TOGGLE_CARD = 'TOGGLE_CARD';
 export const SET_PROPERTY = 'SET_PROPERTY';
 
 // ------------------------------------
